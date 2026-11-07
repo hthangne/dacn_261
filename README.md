@@ -1,4 +1,3 @@
-Markdown
 # Hệ Thống Hỗ Trợ Theo Dõi & Phục Hồi Bàn Chân Bẹt Ở Trẻ Em — Backend
 
 Đây là hệ thống Backend của dự án phục hồi chức năng bàn chân bẹt cho trẻ em, được xây dựng trên nền tảng **NestJS + TypeScript**, sử dụng **PostgreSQL** và **TypeORM**.
@@ -19,40 +18,15 @@ Markdown
 **1. Cài đặt các thư viện phụ thuộc:**
 ```bash
 pnpm install
-2. Cấu hình biến môi trường:
-Tạo file .env từ file mẫu .env.example:
-
-Bash
 cp .env.example .env
-Lưu ý: Mở file .env để điền mật khẩu Database và cấu hình chuỗi bảo mật (BETTER_AUTH_SECRET). File .env chứa thông tin nhạy cảm nên đã được gitignore, tuyệt đối không đẩy file này lên Git.
-
-🐳 Khởi tạo Cơ sở dữ liệu (Database)
-Dự án cấu hình Database bằng Docker chạy ở port 5436 (ánh xạ vào port mặc định của container).
-
-1. Bật Database PostgreSQL:
-
-Bash
 docker compose -f docker-compose.dev.yml up -d
-2. Khởi tạo và nạp dữ liệu mẫu (Seeder):
-Dự án đã thiết lập sẵn cơ chế Reset & Seed. Lệnh dưới đây sẽ xóa sạch cấu trúc bảng cũ, tự động tạo lại bảng mới theo Entity hiện tại, và nạp dữ liệu mẫu (User, ChildProfile, TreatmentPlan, DailyLog,...).
-
-Bash
 pnpm seed
-(⚠️ Cảnh báo: Chỉ dùng lệnh này trong môi trường Dev, lệnh sẽ xóa sạch dữ liệu cũ).
-
-🏃‍♂️ Khởi chạy ứng dụng
-Chạy server Backend ở chế độ development (tự động reload khi sửa code):
-
-Bash
 pnpm run start:dev
 Sau khi server khởi động thành công, bạn có thể truy cập:
 
 Base API: http://localhost:8080/api
 
 Tài liệu Swagger (API Docs): http://localhost:8080/api/docs
-
-🧪 Kiểm tra chất lượng Code (Code Quality)
-Bash
 # Kiểm tra lỗi Linter
 pnpm run lint
 
@@ -61,8 +35,6 @@ pnpm run format
 
 # Kiểm tra lỗi TypeScript (không build)
 npx tsc --noEmit
-📁 Cấu trúc thư mục chính
-Plaintext
 src/
 ├── common/                 # Chứa các Filters (vd: GlobalException), Interceptors dùng chung
 ├── config/                 # Cấu hình biến môi trường (Environment validation)
