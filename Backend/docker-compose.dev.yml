@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: dacn261-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: dacn261
+    ports:
+      - '5436:5432'
+    volumes:
+      - dacn261-pgdata:/var/lib/postgresql/data
+  redis:
+    image: redis:7-alpine
+    container_name: dacn261-redis
+    command: redis-server --appendonly yes
+    ports:
+      - '36379:6379'
+    volumes:
+      - dacn261-redisdata:/data
+
+volumes:
+  dacn261-pgdata:
+  dacn261-redisdata:
